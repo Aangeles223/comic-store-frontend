@@ -17,7 +17,7 @@ import {
   FaSignOutAlt,
   FaHashtag,
 } from "react-icons/fa";
-import "./Clientes.css";
+import "../styles.css";
 
 const Clientes = () => {
   const navigate = useNavigate();

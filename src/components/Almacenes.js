@@ -23,7 +23,7 @@ import {
   FaUsers,
   FaEnvelope,
 } from "react-icons/fa";
-import "./Almacenes.css";
+import "../styles.css";
 
 const Almacenes = () => {
   const navigate = useNavigate();

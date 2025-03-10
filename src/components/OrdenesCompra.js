@@ -16,7 +16,7 @@ import {
   FaEnvelope,
   FaSignOutAlt,
 } from "react-icons/fa";
-import "./OrdenesCompra.css";
+import "../styles.css";
 
 const OrdenesCompra = () => {
   const navigate = useNavigate();
