@@ -1,83 +1,239 @@
-/* 📌 Estilos generales */
-.clientes-page {
-    display: flex;
-}
-
-/* 📌 Ajuste del sidebar */
-.sidebar {
-    width: 260px;
-    height: 100vh;
-    background: #2c3e50;
-    color: white;
-    position: fixed;
-    padding: 20px;
-}
-
-/* 📌 Contenedor principal */
-.clientes-main {
-    margin-left: 260px;
-    padding: 20px;
+/* Ajuste para que la sección ocupe mejor el espacio */
+.clientes-container {
     width: calc(100% - 260px);
+    margin-left: 260px;
+    padding: 10px 20px;
 }
 
-/* 📌 Header (Título y Botón) */
-.header-container {
+/* Alineación del encabezado con título y botones */
+.header-clientes {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
-.btn-agregar {
+/* Botones con mismo tamaño */
+.botones-clientes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-agregar,
+.btn-exportar {
     background-color: #28a745;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
+    font-size: 14px;
+    transition: background 0.3s;
+    min-width: 180px;
+    justify-content: center;
 }
 
-/* 📌 Tabla */
+.btn-exportar {
+    background-color: #218838;
+}
+
+.btn-agregar:hover,
+.btn-exportar:hover {
+    background-color: #1e7e34;
+}
+
+/* Barra de búsqueda ajustada */
+.buscador {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Mantiene el tamaño de la tabla aunque no haya datos */
 .tabla-container {
+    width: 100%;
     background: white;
     border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    padding: 10px;
     overflow-x: auto;
+    max-width: 1000px;
+    min-height: 350px; /* Altura mínima para que la tabla no se haga más pequeña */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+/* Tabla */
 .clientes-table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.clientes-table th {
-    background: #2c3e50;
-    color: white;
-    padding: 12px;
     text-align: center;
+    table-layout: fixed;
+    min-height: 300px; /* Mantiene un tamaño constante */
 }
 
+.clientes-table th,
 .clientes-table td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.clientes-table thead,
+.clientes-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.clientes-table tbody {
+    min-height: 200px; /* Fijar altura para evitar cambios de tamaño */
+    display: block;
+    width: 100%;
+}
+
+/* Encabezados */
+.clientes-table th {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 15px;
+    border-bottom: 3px solid #1a252f;
+}
+
+/* Filas */
+.clientes-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Estilos para la fila de "No se encontraron clientes" */
+.no-resultados {
     text-align: center;
-}
-
-.acciones button {
-    background: none;
-    border: none;
-    cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
+    padding: 20px;
+    color: #777;
 }
 
+/* Estilo para los botones de acciones */
+.acciones {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* Tamaño uniforme para los botones */
+.btn-editar,
+.btn-eliminar {
+    border: none;
+    width: 40px; /* Tamaño fijo */
+    height: 40px; /* Tamaño fijo */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Ajuste para que los íconos sean más visibles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo de los botones */
 .btn-editar {
-    color: #28a745;
+    background-color: #28a745;
+    color: white;
 }
 
 .btn-eliminar {
-    color: #dc3545;
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Íconos dentro de los botones */
+.btn-editar svg,
+.btn-eliminar svg {
+    font-size: 16px; /* Asegura que los íconos tengan el mismo tamaño */
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .clientes-container {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .header-clientes {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .botones-clientes {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tabla-container,
+    .buscador {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Contenedor de los botones */
+.botones-clientes {
+    display: flex;
+    gap: 10px;
+}
+
+/* Tamaño uniforme para los botones */
+.btn-agregar,
+.btn-exportar {
+    width: 180px; /* Ancho fijo */
+    height: 45px; /* Altura fija */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+/* Estilos individuales */
+.btn-agregar {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-exportar {
+    background-color: #218838;
+    color: white;
+}
+
+/* Ajustar tamaño de los iconos dentro de los botones */
+.btn-agregar svg,
+.btn-exportar svg {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+/* Hover */
+.btn-agregar:hover,
+.btn-exportar:hover {
+    opacity: 0.9;
 }
