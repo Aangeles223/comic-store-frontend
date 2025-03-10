@@ -1,7 +1,7 @@
 // src/components/RegisterEmployee.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import './RegisterEmployee.css'; // Importar el archivo CSS
+import "../styles.css";// Importar el archivo CSS
 
 const RegisterEmployee = () => {
   const [employee, setEmployee] = useState({

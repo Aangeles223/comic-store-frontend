@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaBoxOpen, FaEdit, FaTrash } from "react-icons/fa";
-import "./EditarProducto.css"; // Estilos similares a "Almacenes"
+import "../styles.css";
 
 const EditarProducto = () => {
   const { id } = useParams();

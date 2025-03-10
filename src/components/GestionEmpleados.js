@@ -17,7 +17,7 @@ import {
   FaToggleOff,
   FaTrash,
 } from "react-icons/fa";
-import "./GestionEmpleados.css";
+import "../styles.css"; // Importa el archivo CSS consolidado
 
 const GestionEmpleados = ({ empleado }) => {
   const navigate = useNavigate();
@@ -62,14 +62,12 @@ const GestionEmpleados = ({ empleado }) => {
     correo: "juanperez@example.com",
   };
 
-  // ✅ Función para editar un empleado
   const handleEditarEmpleado = (empleado) => {
     setEmpleadoEditando(empleado);
-    setNuevoEmpleado(empleado); // Cargar los datos en el formulario
+    setNuevoEmpleado(empleado);
     setModalOpen(true);
   };
 
-  // ✅ Función para eliminar un empleado
   const handleEliminarEmpleado = (id) => {
     const confirmacion = window.confirm(
       "¿Seguro que deseas eliminar este empleado?"
@@ -79,22 +77,18 @@ const GestionEmpleados = ({ empleado }) => {
     }
   };
 
-  // ✅ Manejo de cambios en el formulario
   const handleChange = (e) => {
     setNuevoEmpleado({ ...nuevoEmpleado, [e.target.name]: e.target.value });
   };
 
-  // ✅ Función para abrir/cerrar submenús
   const toggleSubmenu = (menu) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
   };
 
-  // ✅ Función para mostrar/ocultar el menú de usuario
   const toggleMenuUsuario = () => {
     setMenuUsuarioVisible(!menuUsuarioVisible);
   };
 
-  // ✅ Función para cambiar el estado activo/inactivo de un empleado
   const toggleActivo = (id) => {
     setEmpleados(
       empleados.map((emp) =>
@@ -103,19 +97,16 @@ const GestionEmpleados = ({ empleado }) => {
     );
   };
 
-  // ✅ Función para manejar el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (empleadoEditando) {
-      // Editar un empleado existente
       setEmpleados(
         empleados.map((emp) =>
           emp.id === empleadoEditando.id ? { ...emp, ...nuevoEmpleado } : emp
         )
       );
     } else {
-      // Agregar un nuevo empleado
       setEmpleados([
         ...empleados,
         {
@@ -125,7 +116,6 @@ const GestionEmpleados = ({ empleado }) => {
       ]);
     }
 
-    // Limpiar el formulario y cerrar el modal
     setEmpleadoEditando(null);
     setNuevoEmpleado({
       nombre: "",
@@ -139,7 +129,6 @@ const GestionEmpleados = ({ empleado }) => {
 
   return (
     <div className="empleados-page">
-      {/* Sidebar - Menú Lateral */}
       <nav className="sidebar">
         <div className="logo-container">
           <img
@@ -155,7 +144,6 @@ const GestionEmpleados = ({ empleado }) => {
             <span className="menu-text">Inicio</span>
           </li>
 
-          {/* Menú desplegable de Clientes */}
           <li className="menu-item" onClick={() => toggleSubmenu("clientes")}>
             <div className="menu-button">
               <FaShoppingCart className="icon" />{" "}
@@ -178,7 +166,6 @@ const GestionEmpleados = ({ empleado }) => {
             <li onClick={() => navigate("/promociones")}>Promociones</li>
           </ul>
 
-          {/* Menú desplegable de Inventarios */}
           <li
             className="menu-item"
             onClick={() => toggleSubmenu("inventarios")}
@@ -203,10 +190,8 @@ const GestionEmpleados = ({ empleado }) => {
               Recepción de Mercancía
             </li>
             <li onClick={() => navigate("/movimientos")}>Movimientos</li>{" "}
-            {/* 🔹 Nuevo apartado agregado */}
           </ul>
 
-          {/* Proveedores */}
           <li
             className="menu-item"
             onClick={() => toggleSubmenu("proveedores")}
@@ -232,10 +217,8 @@ const GestionEmpleados = ({ empleado }) => {
             <li onClick={() => navigate("/ordenes-de-compra")}>
               Órdenes de Compra
             </li>{" "}
-            {/* 🔹 Nuevo apartado agregado */}
           </ul>
 
-          {/* 🔹 Gestión de Empleados */}
           <li className="menu-item" onClick={() => toggleSubmenu("empleados")}>
             <div className="menu-button">
               <FaUsers className="icon" />{" "}
@@ -263,12 +246,10 @@ const GestionEmpleados = ({ empleado }) => {
           </ul>
         </ul>
 
-        {/* Avatar en la esquina inferior */}
         <div className="user-profile" onClick={toggleMenuUsuario}>
           <FaUserCircle className="user-avatar" />
           <span className="user-name">{localEmpleado.nombre}</span>
         </div>
-        {/* Menú desplegable del usuario */}
         {menuUsuarioVisible && (
           <div className={`user-menu ${menuUsuarioVisible ? "visible" : ""}`}>
             <p>
@@ -284,7 +265,6 @@ const GestionEmpleados = ({ empleado }) => {
         )}
       </nav>
 
-      {/* 🔹 Contenedor del título y botón */}
       <div className="header-container">
         <h2>👥 Gestión de Empleados</h2>
         <button className="btn-agregar" onClick={() => setModalOpen(true)}>
@@ -292,7 +272,6 @@ const GestionEmpleados = ({ empleado }) => {
         </button>
       </div>
 
-      {/* 🔹 Tabla mejor alineada */}
       <div className="table-wrapper">
         <table className="empleados-table">
           <thead>
@@ -312,7 +291,7 @@ const GestionEmpleados = ({ empleado }) => {
                 <td>{index + 1}</td>
                 <td>{empleado.nombre}</td>
                 <td>{empleado.email}</td>
-                <td>********</td> {/* Solo muestra asteriscos por seguridad */}
+                <td>********</td>
                 <td>{empleado.rol}</td>
                 <td>
                   <button
@@ -349,6 +328,9 @@ const GestionEmpleados = ({ empleado }) => {
       {modalOpen && (
         <div className="modal">
           <div className="modal-content">
+            <button className="close-button" onClick={() => setModalOpen(false)}>
+              &times;
+            </button>
             <h3>🆕 Agregar Empleado</h3>
             <form onSubmit={handleSubmit}>
               <input
@@ -356,9 +338,7 @@ const GestionEmpleados = ({ empleado }) => {
                 name="nombre"
                 placeholder="Nombre"
                 value={
-                  empleadoEditando
-                    ? empleadoEditando.nombre
-                    : nuevoEmpleado.nombre
+                  empleadoEditando ? empleadoEditando.nombre : nuevoEmpleado.nombre
                 }
                 onChange={handleChange}
                 required
@@ -368,9 +348,7 @@ const GestionEmpleados = ({ empleado }) => {
                 name="email"
                 placeholder="Email"
                 value={
-                  empleadoEditando
-                    ? empleadoEditando.email
-                    : nuevoEmpleado.email
+                  empleadoEditando ? empleadoEditando.email : nuevoEmpleado.email
                 }
                 onChange={handleChange}
                 required
@@ -380,9 +358,7 @@ const GestionEmpleados = ({ empleado }) => {
                 name="password"
                 placeholder="Contraseña"
                 value={
-                  empleadoEditando
-                    ? empleadoEditando.password
-                    : nuevoEmpleado.password
+                  empleadoEditando ? empleadoEditando.password : nuevoEmpleado.password
                 }
                 onChange={handleChange}
                 required
