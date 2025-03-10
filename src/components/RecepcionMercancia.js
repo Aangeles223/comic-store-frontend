@@ -17,7 +17,7 @@ import {
   FaEnvelope, // ← Agregado
   FaSignOutAlt,
 } from "react-icons/fa";
-import "../styles.css";
+import "./RecepcionMercancia.css";
 
 const RecepcionMercancia = () => {
   const navigate = useNavigate();

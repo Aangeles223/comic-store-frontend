@@ -19,7 +19,7 @@ import {
   FaMapMarkerAlt,
   FaClipboardList,
 } from "react-icons/fa";
-import "../styles.css";
+import "./GestionProveedores.css";
 
 const GestionProveedores = () => {
   const navigate = useNavigate();

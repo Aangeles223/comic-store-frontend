@@ -1,0 +1,83 @@
+/* 📌 Estilos generales */
+.clientes-page {
+    display: flex;
+}
+
+/* 📌 Ajuste del sidebar */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #2c3e50;
+    color: white;
+    position: fixed;
+    padding: 20px;
+}
+
+/* 📌 Contenedor principal */
+.clientes-main {
+    margin-left: 260px;
+    padding: 20px;
+    width: calc(100% - 260px);
+}
+
+/* 📌 Header (Título y Botón) */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.btn-agregar {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 📌 Tabla */
+.tabla-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+}
+
+.clientes-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.clientes-table th {
+    background: #2c3e50;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.clientes-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.acciones button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-editar {
+    color: #28a745;
+}
+
+.btn-eliminar {
+    color: #dc3545;
+}

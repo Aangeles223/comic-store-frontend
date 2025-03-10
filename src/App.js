@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import RegisterEmployee from "./components/RegisterEmployee";
-import InicioEmpleado from "./components/InicioEmpleado";
+import { useState } from "react"; // Importa el hook useState
+import { Navigate } from "react-router-dom"; // Importa el componente Navigate
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Importa los componentes de React Router
+import RegisterEmployee from "./components/RegisterEmployee"; // Asegúrate de que la ruta sea correcta
+import InicioEmpleado from "./components/InicioEmpleado"; // Componente de inicio
 import Almacenes from "./components/Almacenes";
 import RecepcionMercancia from "./components/RecepcionMercancia";
 import EditarProducto from "./components/EditarProducto";
@@ -18,19 +18,25 @@ import Notificaciones from "./components/Notificaciones";
 import Promociones from "./components/Promociones";
 
 function App() {
-  const [empleado, setEmpleado] = useState(null);
+  const [empleado, setEmpleado] = useState(null); // Estado global de empleado
 
   return (
     <Router>
       <Routes>
-        {/* Redirección automática de "/" a "/inicioempleado" */}
-        <Route path="/" element={<Navigate to="/inicioempleado" />} />
-        
+        {/* Ruta para mostrar el componente RegisterEmployee */}
         <Route path="/register-employee" element={<RegisterEmployee />} />
-        <Route path="/inicioempleado" element={<InicioEmpleado setEmpleado={setEmpleado} />} />
-        <Route path="/almacenes" element={<Almacenes />} />
-        <Route path="/recepcion-de-mercancia" element={<RecepcionMercancia />} />
-        <Route path="/editar-producto/:id" element={<EditarProducto />} />
+        <Route
+          path="/inicioempleado"
+          element={<InicioEmpleado setEmpleado={setEmpleado} />}
+        />
+        {/* Ruta para la página de inicio de empleados */}
+        <Route path="/almacenes" element={<Almacenes />} /> {/* Nueva ruta */}
+        <Route
+          path="/recepcion-de-mercancia"
+          element={<RecepcionMercancia />}
+        />
+        <Route path="/editar-producto/:id" element={<EditarProducto />} />{" "}
+        {/* Nueva ruta */}
         <Route path="/gestion-proveedores" element={<GestionProveedores />} />
         <Route path="/agregar-proveedor" element={<AgregarProveedor />} />
         <Route path="/movimientos" element={<Movimientos />} />
@@ -39,15 +45,15 @@ function App() {
         <Route path="/membresias" element={<Membresias />} />
         <Route path="/notificaciones" element={<Notificaciones />} />
         <Route path="/promociones" element={<Promociones />} />
-        <Route 
-          path="/gestion-empleados" 
+        <Route
+          path="/gestion-empleados"
           element={
             empleado?.rol === "Administrador" ? (
               <GestionEmpleados empleado={empleado} />
             ) : (
               <Navigate to="/inicioempleado" />
             )
-          } 
+          }
         />
       </Routes>
     </Router>

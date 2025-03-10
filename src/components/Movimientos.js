@@ -15,7 +15,7 @@ import {
   FaEnvelope, // 🔹 Asegúrate de importar FaEnvelope
   FaSignOutAlt,
 } from "react-icons/fa";
-import "../styles.css";
+import "./Movimientos.css";
 
 const Movimientos = () => {
   // 📌 La función está correctamente definida aquí

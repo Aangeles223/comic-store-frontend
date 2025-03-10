@@ -13,7 +13,7 @@ import {
   FaEdit,
   FaUsers,
 } from "react-icons/fa";
-import "../styles.css";
+import "./InicioEmpleado.css";
 
 const InicioEmpleado = ({ setEmpleado }) => {
   const navigate = useNavigate();

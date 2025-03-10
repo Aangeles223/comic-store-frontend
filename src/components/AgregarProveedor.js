@@ -7,7 +7,7 @@ import {
   FaMapMarkerAlt,
   FaClipboardList,
 } from "react-icons/fa";
-import "../styles.css";
+import "./AgregarProveedor.css";
 
 const AgregarProveedor = () => {
   const navigate = useNavigate();
