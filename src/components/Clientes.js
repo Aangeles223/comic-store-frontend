@@ -17,7 +17,7 @@ import {
   FaTruck,
   FaUsers,
 } from "react-icons/fa";
-import "./Clientes.css";
+import styles from "../styles/clientes.module.css";
 
 const Clientes = () => {
   const navigate = useNavigate();
@@ -215,23 +215,23 @@ const Clientes = () => {
         )}
       </nav>
 
-      <div className="clientes-container">
+      <div className={styles["clientes-container"]}>
         {/* Sección de encabezado con título y botones */}
-        <div className="header-clientes">
+        <div className={styles["header-clientes"]}>
           <h2>📜 Gestión de Clientes</h2>
-          <div className="botones-clientes">
-            <button className="btn-agregar">
+          <div className={styles["botones-clientes"]}>
+            <button className={styles["btn-agregar"]}>
               <FaPlus /> Agregar Cliente
             </button>
-            <button className="btn-exportar">
+            <button className={styles["btn-exportar"]}>
               <FaFileExcel /> Exportar a Excel
             </button>
           </div>
         </div>
 
         {/* Buscador */}
-        <div className="buscador">
-          <FaSearch className="icono-busqueda" />
+        <div className={styles["buscador"]}>
+          <FaSearch className={styles["icono-busqueda"]} />
           <input
             type="text"
             placeholder="Buscar por nombre, email o membresía..."
@@ -241,8 +241,8 @@ const Clientes = () => {
         </div>
 
         {/* Tabla */}
-        <div className="tabla-container">
-          <table className="clientes-table">
+        <div className={styles["tabla-container"]}>
+          <table className={styles["clientes-table"]}>
             <thead>
               <tr>
                 <th>#</th>
@@ -278,11 +278,11 @@ const Clientes = () => {
                     <td>{cliente.direccion}</td>
                     <td>{cliente.fecha_registro}</td>
                     <td>{cliente.nivel_membresia}</td>
-                    <td className="acciones">
-                      <button className="btn-editar">
+                    <td className={styles["acciones"]}>
+                      <button className={styles["btn-editar"]}>
                         <FaEdit />
                       </button>
-                      <button className="btn-eliminar">
+                      <button className={styles["btn-eliminar"]}>
                         <FaTrash />
                       </button>
                     </td>
